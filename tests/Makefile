@@ -30,8 +30,8 @@ coverage:
 	make all CFLAGS_ADD="-fprofile-instr-generate -fcoverage-mapping"
 	make run-test
 	llvm-profdata merge default.profraw -o all.profdata
-	llvm-cov show -instr-profile=all.profdata "./test" "../libsha"
-	llvm-cov export -instr-profile=all.profdata -format=lcov "./test" "../libsha" > coverage.lcov
+	llvm-cov show -instr-profile=all.profdata "./test" "../libsha" --ignore-filename-regex="libsha/lib_helpers.c"
+	llvm-cov export -instr-profile=all.profdata -format=lcov "./test" "../libsha" --ignore-filename-regex="libsha/lib_helpers.c" > coverage.lcov
 
 .PHONY: clean
 clean:
