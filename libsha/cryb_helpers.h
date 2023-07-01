@@ -39,16 +39,16 @@
 #include <stdint.h>
 #endif
 
-#define CRYB_ROR(N)                                            \
-	static inline uint##N##_t ror##N(uint##N##_t i, int n)     \
-	{                                                          \
-		return (i << (-n & ((N)-1)) | i >> (n & ((N)-1)));     \
+#define CRYB_ROR(N)                                                            \
+	static inline uint##N##_t ror##N(uint##N##_t i, int n)                 \
+	{                                                                      \
+		return (i << (-n & ((N)-1)) | i >> (n & ((N)-1)));             \
 	}
 
-#define CRYB_ROL(N)                                            \
-	static inline uint##N##_t rol##N(uint##N##_t i, int n)     \
-	{                                                          \
-		return (i << (n & ((N)-1)) | i >> (-n & ((N)-1)));     \
+#define CRYB_ROL(N)                                                            \
+	static inline uint##N##_t rol##N(uint##N##_t i, int n)                 \
+	{                                                                      \
+		return (i << (n & ((N)-1)) | i >> (-n & ((N)-1)));             \
 	}
 
 CRYB_ROL(32);
