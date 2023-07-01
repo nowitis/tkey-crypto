@@ -1,4 +1,5 @@
-# Crypto libraries for the Tillitis TKey
+# Crypto libraries for the Tillitis TKey [![tests](https://github.com/nowitis/tkey-crypto/actions/workflows/tests.yml/badge.svg)](https://github.com/nowitis/tkey-crypto/actions/workflows/tests.yml) [![coverage](https://nowitis.github.io/tkey-crypto/badges/coverage.svg)](https://github.com/nowitis/tkey-crypto/actions)
+
 Only contains SHA1 & HMAC-SHA1 – for now. 
 
 - Common RV32 arithmetic functions: `libarithmetic`.
