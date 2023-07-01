@@ -1,0 +1,23 @@
+name: 'lint'
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/nowitis/tkey-deviceapp-builder
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: main
+
+      - name: Check code formatting
+        run: make -C main checkfmt
+        continue-on-error: true
+
+      - name: Run clang linter
+        run: make -C main checklint

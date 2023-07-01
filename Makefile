@@ -32,12 +32,6 @@ all: libarithmetic/libarithmetic.a libsha/libsha.a
 podman:
 	podman run --rm --mount type=bind,source=$(CURDIR),target=/src --mount type=bind,source=$(CURDIR)/../tkey-libs,target=/tkey-libs -w /src -it $(IMAGE) make -j
 
-podman-lint:
-	podman run --rm --mount type=bind,source=$(CURDIR),target=/src --mount type=bind,source=$(CURDIR)/../tkey-libs,target=/tkey-libs -w /src -it $(IMAGE) make -j lint
-
-podman-lintfix:
-	podman run --rm --mount type=bind,source=$(CURDIR),target=/src --mount type=bind,source=$(CURDIR)/../tkey-libs,target=/tkey-libs -w /src -it $(IMAGE) make -j lintfix
-
 inpodman:
 	podman run --rm --mount type=bind,source=$(CURDIR),target=/src --mount type=bind,source=$(CURDIR)/../tkey-libs,target=/tkey-libs -w /src -it $(IMAGE) make -j $(PODMAN_TARGET)
 
@@ -61,7 +55,7 @@ clean:
 	rm -f $(CRYPTOLIBS) $(CRYPTOLIBOBJS)
 
 # Uses ../.clang-format
-FMTFILES=include/*.h libsha/*.c
+FMTFILES=include/*.h libsha/*.c libsha/*.h
 .PHONY: fmt
 fmt:
 	clang-format --dry-run --ferror-limit=0 $(FMTFILES)
@@ -71,9 +65,9 @@ checkfmt:
 	clang-format --dry-run --ferror-limit=0 --Werror $(FMTFILES)
 
 # Uses ../.clang-tidy
+.PHONY: checklint
+checklint:
+	clang-tidy $(FMTFILES) -- $(CINCLUDES)
 .PHONY: lint
 lint:
-	clang-tidy $(FMTFILES) -- $(CINCLUDES)
-.PHONY: lintfix
-lintfix:
 	clang-tidy -fix-errors $(FMTFILES) -- $(CINCLUDES)
