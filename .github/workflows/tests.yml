@@ -6,7 +6,7 @@ on:
     paths: ['include/**/*', 'lib*/**/*', 'tests/**/*']
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/nowitis/tkey-deviceapp-builder
