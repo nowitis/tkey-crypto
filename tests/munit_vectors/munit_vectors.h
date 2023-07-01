@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+
 #include "munit/munit.h"
 #include <errno_compat.h>
 

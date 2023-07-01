@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: BSD-3-Clause
 /*-
  * Copyright (c) 2012 The University of Oslo
  * Copyright (c) 2012-2016 Dag-Erling Smørgrav
@@ -29,7 +30,9 @@
  */
 
 #include "lib_helpers.h"
+#ifdef __riscv
 #include <tklib/limits.h>
+#endif
 
 // LCOV_EXCL_START
 // NOLINTBEGIN(bugprone-easily-swappable-parameters)

@@ -1,4 +1,3 @@
-// Copyright (C) 2023 - Perceval Faramaz
 // SPDX-License-Identifier: GPL-2.0-only
 
 #ifndef SHA1_H

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 /* Copyright (C) 2000-2023 Free Software Foundation, Inc.
 
 This file is part of GCC.

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0-only
 
 #ifndef LIMITS_H
 #define LIMITS_H

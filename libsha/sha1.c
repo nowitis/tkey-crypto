@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: BSD-3-Clause
 /*-
  * Copyright (c) 2012 The University of Oslo
  * Copyright (c) 2012-2016 Dag-Erling Smørgrav

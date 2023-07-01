@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+
 #include "munit/munit.h"
 #include "munit_vectors/munit_vectors.h"
 #include <stdio.h>

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+
 #include "munit/munit.h"
 #include "t_sha1.h"
 #include "t_hmac_sha1.h"

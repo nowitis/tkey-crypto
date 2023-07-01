@@ -11,19 +11,20 @@ cd ..
 tag="SPDX-License-Identifier:"
 
 missingok_dirs=(
+.github
+tests/munit
+tests/vectors
 )
 
 missingok_files=(
-.gitignore    
-.clang-format
+.gitignore
+.gitmodules
+.clang-*
 LICENSE
 Makefile
+**/Makefile
 README.md
 RELEASE.md
-example-app/Makefile
-libarithmetic/div.c
-libsha/hmac_sha1.c
-libsha/sha1.c
 )
 
 is_missingok() {
