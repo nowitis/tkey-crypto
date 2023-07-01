@@ -1,0 +1,54 @@
+name: 'coverage'
+
+on:
+  workflow_run:
+    workflows: ["tests"]
+    branches: [main]
+    types: 
+      - completed
+
+jobs:
+  coverage:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: tests.yml
+          workflow_conclusion: success
+          name: coverage-${{ github.sha }}
+          path: .
+
+      - uses: actions/setup-node@v3
+      
+      - name: Create badge
+        shell: bash
+        run: |
+          npm install -g lcov-badge2
+          mkdir -p gh-pages/badges
+          lcov-badge2 -o gh-pages/badges/coverage.svg ./coverage.lcov
+
+      - name: Deploy gh-pages (with new badge)
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          repository: gh-pages
+          commit_message: "Update badges [skip ci]"
+          skip_fetch: true
+          skip_checkout: true
+
+      # Without this, will get Error:
+      # Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/coverage-badge-action/coverage-badge-action/action.yml'.
+      # Did you forget to run actions/checkout before running your local action?
+      - name: Checkout Back
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
