@@ -3,7 +3,7 @@ name: 'tests'
 on:
   push:
     branches: [ main ]
-    paths: ['include/**/*', 'libsha/**/*', 'libarithmetic/**/*', 'tests/**/*']
+    paths: ['include/**/*', 'lib*/**/*', 'tests/**/*']
 
 jobs:
   build:
